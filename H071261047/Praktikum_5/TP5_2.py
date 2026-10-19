@@ -35,7 +35,7 @@ def sensor_kata(teks, kata, simbol):
     for i in semua:
         if cek_batas_kata(teks, i, panjang):
             hasil = hasil + teks[posisi:i] + simbol * panjang 
-            posisi = i + panjang 
+            posisi = i + panjang
             indeks_sensor.append(i)
 
     hasil = hasil + teks[posisi:]

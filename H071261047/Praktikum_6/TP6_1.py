@@ -7,7 +7,7 @@ total_seluruh_stok = sum(daftar_stok.values())
 total_nilai_aset = sum(daftar_harga.values())
 
 def tambah_buku(judul, penulis, harga, stok):
-    daftar_buku[judul] = judul   
+    daftar_buku[judul] = judul
     daftar_penulis[judul] = penulis
     daftar_harga[judul] = harga
     daftar_stok[judul] = stok
@@ -72,7 +72,7 @@ while True:
         print("5. Keluar")
         menu = int(input("Pilih menu (1-5): "))
         if menu == 1:
-            judul_buku = input("Judul buku: ").title ()
+            judul_buku = input("Judul buku: ").title () 
             penulis = input("Penulis: ").title ()
             harga = int(input("Harga: "))
             stok = int(input("Stok awal: "))
@@ -93,9 +93,9 @@ while True:
             print("===================================")
             print("  RINGKASAN INVENTARIS BOOKNEST")
             print("===================================")
-            print(f"Jumlah jenis buku : {total_buku}")
-            print(f"Total seluruh stok: {total_seluruh_stok}")
-            print(f"Total nilai aset  : {total_nilai_aset}")
+            print(f"Jumlah jenis buku : {total_buku}") 
+            print(f"Total seluruh stok: {sum(daftar_stok.values())}") #
+            print(f"Total nilai aset  : {sum(daftar_harga[buku] * daftar_stok[buku] for buku in daftar_buku)}") #
             termahal()
         elif menu == 5:
             print("Terima kasih telah menggunakan BookNest!")

@@ -7,13 +7,17 @@ genre_dan_total = {}
 genre = ["Pop", "Rock", "Jazz", "RnB", "Dangdut"]
 
 def tambah_lagu(playlist, genre_set, judul, artis, genre, durasi):
-    genre_dan_total[genre_set] = 0
     lagu_dan_genre[playlist] = genre_set
-    judul_nya.append(judul)
+    judul_nya.append(judul) 
     artis_nya.append(artis)
     genre_nya.add(genre)
     durasi_nya.append(durasi)
-    genre_dan_total[genre_set] += 1
+    
+    # Cek apakah genre ini sudah ada di dictionary atau belum
+    if genre_set not in genre_dan_total:
+        genre_dan_total[genre_set] = 0  # Kalau belum ada, buat dulu jadi 0 (hanya untuk genre baru)
+        
+    genre_dan_total[genre_set] += 1  # Tambah 1 untuk menghitung total lagu
     return lagu_dan_genre, judul_nya, artis_nya, genre_nya, durasi_nya, genre_dan_total
 
 def  tampilkan_playlist(playlist):
@@ -88,8 +92,8 @@ def statistik_playlist(playlist, genre_dan_total):
     for key, value in genre_dan_total.items():
         print(f"  {key}        : # ({value})")
     print()
-    print(f"Lagu terpanjang : {judul_nya[lagu_terpanjang]} ({menit_panjang}:{detik_panjang})")
-    print(f"Lagu terpanjang : {judul_nya[lagu_terpanjang]} ({menit_pendek}:{detik_pendek})")
+    print(f"Lagu terpanjang : {judul_nya[lagu_terpanjang]} ({menit_panjang}:{detik_panjang})") #
+    print(f"Lagu terpendek : {judul_nya[lagu_terpendek]} ({menit_pendek}:{detik_pendek})")     #
     print("===============================================")
 
 print("===============================")

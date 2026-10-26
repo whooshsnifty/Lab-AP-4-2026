@@ -1,30 +1,31 @@
 daftar_list_kandidat = set()
 daftar_suara_kandidat = {} 
 daftar_suara_pemilihan = {}
-rekapan_suara_yang_memilih = set() 
+rekapan_suara_yang_memilih = set()
 
 def daftar_kandidat(kandidat_set, nama):
     daftar_suara_kandidat[kandidat_set] = 0
     daftar_list_kandidat.add(nama)
     return daftar_suara_kandidat, daftar_list_kandidat
 
-def berikan_suara(rekap_suara, kandidat_set):
+def berikan_suara(rekap_suara, kandidat_set): #
     if rekap_suara in rekapan_suara_yang_memilih:
-        print(f"'{nama_pemilih}' sudah memberikan suara sebelumnya!")
+        print(f"'{rekap_suara}' sudah memberikan suara sebelumnya!")
+    elif kandidat_set not in daftar_suara_kandidat:
+        print("Nama kandidat yang anda masukkan tidak valid!")
     else:
         rekapan_suara_yang_memilih.add(rekap_suara)
         hitung_suara(rekap_suara, kandidat_set)
         daftar_suara_pemilihan[rekap_suara] = kandidat_set
-        print(f"Suara '{nama_pemilih}' untuk '{pilih_kandidat}' berhasil dicatat!")
+        print(f"Suara '{rekap_suara}' untuk '{kandidat_set}' berhasil dicatat!")
         print()
 
-def hitung_suara(rekap_suara, kandidat_set):
-    for key, value in daftar_suara_kandidat.items():
-        if key == kandidat_set:
-            daftar_suara_kandidat[kandidat_set] += 1
-            return daftar_suara_kandidat
-        else:
-            return "Nama yang anda masukkan tidak valid"
+def hitung_suara(rekap_suara, kandidat_set): #
+    if kandidat_set in daftar_suara_kandidat:
+        daftar_suara_kandidat[kandidat_set] += 1
+        return daftar_suara_kandidat
+    else:
+        return "Nama yang anda masukkan tidak valid"
 
 def tampilkan_hasil():
     tertinggi = max(daftar_suara_kandidat.values())
